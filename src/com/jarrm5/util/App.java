@@ -8,7 +8,7 @@ import com.jarrm5.model.Message;
 import com.jarrm5.model.UserAccount;
 
 public class App {
-	
+	//Added a comment
 	public static void main(String[] args) {
 		UserAccount[] userAccounts = UserAccount.getAccounts();
 		AdminAccount[] adminAccounts = AdminAccount.getAccounts();
