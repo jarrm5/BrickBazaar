@@ -17,8 +17,8 @@ public class App {
 	}
 	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
-			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], "Hannah", "She's a psychotic Bitch!");
-			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], "Bandit", "Fuck him too!! They're both insane!!");
+			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], "Hello", "Testing message service");
+			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], "Hello again", "Still testing..");
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
@@ -31,7 +31,7 @@ public class App {
 		//userAccounts[0].setBanned(true);
 		try {
 			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[0]);
-			userAccounts[0].getBuddyList().get(0).setUsername("Yuge Asshole");
+			userAccounts[0].getBuddyList().get(0).setUsername("nrinella");
 			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
 			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
 		} catch (AppGenericException e) {
@@ -45,7 +45,7 @@ public class App {
 	public static void LoginTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		//userAccounts[0].setBanned(true);
 		try {
-			LoginService.login(userAccounts[0], "poop");
+			LoginService.login(userAccounts[0], "asfas");
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +60,7 @@ public class App {
 //			e.printStackTrace();
 //		}
 //		try {
-//			LoginService.login(adminAccounts[0], "poop");
+//			LoginService.login(adminAccounts[0], "asdfas");
 //		} catch (AppGenericException e) {
 //			e.printStackTrace();
 //		}

@@ -108,12 +108,12 @@ public class UserAccount extends Account implements Cloneable{
 	
 	public static UserAccount[] getAccounts() {
 		return new UserAccount[] { 
-				new UserAccount("7StringsOfWonder","password1","Jake","Bowen","JB123@gmail.com",LocalDate.of(1985, 6, 15),Gender.MALE),
-				new UserAccount("Big Dick Tom","password1","Tom","Murphy","the69thpiimp@snowboard.com",LocalDate.of(1983,1, 10),Gender.MALE),
-				new UserAccount("ridicPipes","password1","Spencer","Sotello","brogmail.com",LocalDate.of(1986,11, 21),Gender.MALE),
-				new UserAccount("Bulbous","password1","Misha","Mansoor","abc123",LocalDate.of(1984,3,31),Gender.MALE),
-				new UserAccount("ArmsOfSteel","password1","Alex","Bois",null,LocalDate.of(1985,7,7),Gender.MALE),
-				new UserAccount("VneckGuy4u","password1","Matt","Halpem",null,LocalDate.of(1985,9,30),Gender.MALE)
+				new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989, 1, 10),Gender.MALE),
+				new UserAccount("sevans,","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE),
+				new UserAccount("Crypto Casey","password1","Casey","Leigh","cryptocasey@yahoo.com",LocalDate.of(1989,2,21),Gender.FEMALE),
+				new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE),
+				new UserAccount("Victor 135","password1","Victor","Ginsburg",null,LocalDate.of(1996,7,7),Gender.MALE),
+				new UserAccount("Welshers","password1","Duncan","Ramsey",null,LocalDate.of(1988,10,31),Gender.MALE)
 		};
 	}
 	
