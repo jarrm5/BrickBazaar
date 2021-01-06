@@ -109,7 +109,7 @@ public class UserAccount extends Account implements Cloneable{
 	public static UserAccount[] getAccounts() {
 		return new UserAccount[] { 
 				new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989, 1, 10),Gender.MALE),
-				new UserAccount("sevans,","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE),
+				new UserAccount("sevans","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE),
 				new UserAccount("Crypto Casey","password1","Casey","Leigh","cryptocasey@yahoo.com",LocalDate.of(1989,2,21),Gender.FEMALE),
 				new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE),
 				new UserAccount("Victor 135","password1","Victor","Ginsburg",null,LocalDate.of(1996,7,7),Gender.MALE),

@@ -1,6 +1,8 @@
 package com.jarrm5.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+
 import com.jarrm5.util.MessagingService;
 import com.jarrm5.model.Message;
 
@@ -42,7 +44,7 @@ public abstract class Account implements Cloneable{
 		return NUMBER_OF_ACCOUNTS;
 	}
 
-	public Account(String username, String password) {
+	protected Account(String username, String password) {
 		this.inbox = new ArrayList<Message>(MessagingService.MAX_NUMBER_OF_MESSAGES);
 		this.accountNumber = ++NUMBER_OF_ACCOUNTS;
 		this.loginAttempts = 0;
@@ -65,6 +67,14 @@ public abstract class Account implements Cloneable{
 		clonedAccount.inbox = (ArrayList<Message>)this.inbox.clone();
 		clonedAccount.accountNumber = ++NUMBER_OF_ACCOUNTS;
 		return clonedAccount;
+	}
+}
+class CompareAccountUtil implements Comparator{
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

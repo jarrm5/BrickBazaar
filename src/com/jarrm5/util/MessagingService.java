@@ -13,7 +13,7 @@ public class MessagingService  {
 	
 	//add reply function to maintain same subject and create a thread of messages
 	//break inbox into inbox between account users; and an inbox for between account user and admin user
-	public final static int MAX_NUMBER_OF_MESSAGES = 1;
+	public final static int MAX_NUMBER_OF_MESSAGES = 5;
 	
 	public static boolean sendMessageToUser(Account sender, Account recipient, String subject, String message) throws AppGenericException {
 		

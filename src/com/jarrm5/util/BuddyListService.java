@@ -12,10 +12,12 @@ public class BuddyListService {
 	
 	//Only UserAccounts can add other users.  Other users include Admin Accounts.. so "other" can be of generic type "Account"
 	public static boolean addUserToBuddyList(UserAccount account, Account other) throws AccountException{
-		//Need a way to check for duplicate buddies in the account's list
 		//Check ArrayList<> add documentation.. not returning false when list if full
 		if (account.isBanned()) {
 			throw new UserAccountException(ErrorReason.USER_BANNED,account);
+		}
+		else if (account.getBuddyList().contains(other)) {
+			throw new AccountException(ErrorReason.DUPLICATE_BUDDY,account);
 		}
 		else if (account.getBuddyList().size() >= MAX_NUMBER_OF_BUDDIES) {
 			throw new AccountException(ErrorReason.BUDDY_LIST_FULL,account);

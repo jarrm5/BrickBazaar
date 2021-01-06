@@ -38,8 +38,8 @@ public class AdminAccount extends Account implements Cloneable{
 	
 	public static AdminAccount[] getAccounts() {
 		return new AdminAccount[] { 
-				new AdminAccount("Mod Rah","password1"),
-				new AdminAccount("n0m","password1"),
+				new AdminAccount("Nicodemus","password1"),
+				new AdminAccount("Tryclops","password1"),
 		};
 	}
 	
