@@ -24,7 +24,7 @@ public class MessagingException extends AppGenericException {
 		}
 		return errorReasonStr;
 	}
-//	public enum ErrorReason{
+//	public enum MessagingErrorReason{
 //		MESSAGE_LENGTH_EXCEEDED;
 //	}
 }

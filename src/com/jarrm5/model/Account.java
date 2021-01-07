@@ -1,5 +1,7 @@
 package com.jarrm5.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -15,6 +17,7 @@ public abstract class Account implements Cloneable{
 	private String username;
 	private String password;
 	private ArrayList<Message> inbox;
+	private LocalDateTime createdDateTime;
 	
 	public int getAccountNumber() {
 		return accountNumber;
@@ -43,18 +46,25 @@ public abstract class Account implements Cloneable{
 	public static int getNumberOfAccounts(){
 		return NUMBER_OF_ACCOUNTS;
 	}
-
+	public LocalDateTime getCreatedDateTime() {
+		return createdDateTime;
+	}
+	/*public void setCreatedDateTime(LocalDateTime createdDateTime) {
+		this.createdDateTime = createdDateTime;
+	}*/
+	
 	protected Account(String username, String password) {
 		this.inbox = new ArrayList<Message>(MessagingService.MAX_NUMBER_OF_MESSAGES);
 		this.accountNumber = ++NUMBER_OF_ACCOUNTS;
 		this.loginAttempts = 0;
 		this.username = username;
 		this.password = password;
+		this.createdDateTime = LocalDateTime.now();
 	}
 	
 	@Override
 	public String toString() {
-		return "\nUsername: " + this.username;
+		return "Username: " + this.username + "\nCreated: " + createdDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"));
 	}
 	@Override
 	public boolean equals(Object other) {
@@ -66,15 +76,8 @@ public abstract class Account implements Cloneable{
 		Account clonedAccount = (Account)super.clone();
 		clonedAccount.inbox = (ArrayList<Message>)this.inbox.clone();
 		clonedAccount.accountNumber = ++NUMBER_OF_ACCOUNTS;
+		clonedAccount.createdDateTime = LocalDateTime.now();
 		return clonedAccount;
 	}
 }
-class CompareAccountUtil implements Comparator{
 
-	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-}

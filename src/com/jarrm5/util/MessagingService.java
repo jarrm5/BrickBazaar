@@ -1,5 +1,7 @@
 package com.jarrm5.util;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import com.jarrm5.model.Account;
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.exception.MessagingException;
@@ -9,7 +11,7 @@ import com.jarrm5.exception.UserAccountException;
 import com.jarrm5.model.Message;
 import com.jarrm5.model.UserAccount;
 
-public class MessagingService  {
+public class MessagingService {
 	
 	//add reply function to maintain same subject and create a thread of messages
 	//break inbox into inbox between account users; and an inbox for between account user and admin user
@@ -31,8 +33,7 @@ public class MessagingService  {
 		recipient.getInbox().add(toSend);
 		return true;	
 	}
-	
-	public static void printAllMessages(Account account) {
+	public static void printMessages(Account account) {
 		if (!account.getInbox().isEmpty()) {
 			System.out.println("Inbox messages for user " + account.getUsername());
 			for (Message message : account.getInbox()) {
@@ -42,5 +43,22 @@ public class MessagingService  {
 		else {
 			System.out.println("Inbox empty for " + account.getUsername());
 		}
+	}
+	public static ArrayList<Message> getMessagesByAccount(Account account, Account target){
+		ArrayList<Message> result = new ArrayList<Message>();
+		for (Message message : account.getInbox()) {
+			if (message.getSender().getUsername().equals(target.getUsername())) result.add(message);
+		}
+		return result;
+	}
+	static class MessageSortUtil implements Comparator{
+
+		@Override
+		public int compare(Object o1, Object o2) {
+			Message m1 = (Message)o1;
+			Message m2 = (Message)o2;
+			return m1.getSender().getUsername().compareToIgnoreCase(m2.getSender().getUsername());
+		}
+		
 	}
 }

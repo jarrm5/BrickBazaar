@@ -30,7 +30,7 @@ public class LoginException extends AppGenericException {
 		
 		return errorReasonStr;
 	}
-//	public enum ErrorReason{
+//	public enum LoginErrorReason{
 //		LOGIN_FAILED_PASSWORD,LOGIN_FAILED_ACCOUNT_LOCKED;
 //	}
 }

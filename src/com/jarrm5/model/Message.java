@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.jarrm5.model.Account;
-
 public class Message {
 	
 	public final static int MAX_MESSAGE_LENGTH = 255;

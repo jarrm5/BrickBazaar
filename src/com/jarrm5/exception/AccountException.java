@@ -32,7 +32,7 @@ public class AccountException extends AppGenericException{
 		
 		return super.toString() + errorReasonStr;
 	}
-//	public enum ErrorReason{
+//	public enum AccountErrorReason{
 //		USER_BANNED,BUDDY_LIST_FULL,DUPLICATE_BUDDY;
 //	}
 	

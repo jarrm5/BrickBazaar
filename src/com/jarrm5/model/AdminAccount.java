@@ -15,6 +15,9 @@ public class AdminAccount extends Account implements Cloneable{
 	public int getNumberOfBans() {
 		return numberOfBans;
 	}
+	public void setNumberOfBans(int numberOfBans) {
+		this.numberOfBans = numberOfBans;
+	}
 	
 	private AdminAccount(String username, String password,int adminAccountNumber,int numberOfBans) {
 		super(username,password);
@@ -24,16 +27,6 @@ public class AdminAccount extends Account implements Cloneable{
 	//creating new admin acc - increments account numbers and starts logins/bans = 0
 	public AdminAccount(String username, String password) {
 		this(username, password,++NUMBER_OF_ADMIN_ACCOUNTS,0);
-	}
-	
-	public void banUser(UserAccount userAccount) {
-		if(!userAccount.isBanned()) {
-			userAccount.setBanned(true);
-			this.numberOfBans++;
-		}
-	}
-	public void unbanUser(UserAccount userAccount) {
-		userAccount.setBanned(false);
 	}
 	
 	public static AdminAccount[] getAccounts() {

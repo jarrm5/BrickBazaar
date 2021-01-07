@@ -24,4 +24,7 @@ public class UserAccountException extends AccountException {
 		
 		return super.toString() + "\n" + errorReasonStr;
 	}
+//	public enum UserAccountErrorReason{
+//		USER_BANNED;
+//	}
 }
