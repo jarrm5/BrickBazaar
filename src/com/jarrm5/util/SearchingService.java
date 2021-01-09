@@ -32,7 +32,7 @@ public class SearchingService {
 		}
 		return result;
 	}
-	public static ArrayList<Message> getMessagesWithPredicate(Account searcher, Predicate<Message> tester){
+	/*public static ArrayList<Message> getMessagesWithPredicate(Account searcher, Predicate<Message> tester){
 		ArrayList<Message> result = new ArrayList<Message>();
 		for (Message m : searcher.getInbox()) {
 			if(tester.test(m)) {
@@ -40,7 +40,7 @@ public class SearchingService {
 			}
 		}
 		return result;
-	}
+	}*/
 	public static <X, Y> ArrayList<Y> searchElements(Iterable<X> source,Consumer<Y> block,Predicate<X> tester,Function<X,Y> mapper){
 		ArrayList<Y> result = new ArrayList<Y>();
 		for (X x : source) {

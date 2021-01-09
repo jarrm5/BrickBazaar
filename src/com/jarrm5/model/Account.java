@@ -16,7 +16,8 @@ public abstract class Account implements Cloneable{
 	private int loginAttempts;
 	private String username;
 	private String password;
-	private ArrayList<Message> inbox;
+	private ArrayList<MessageString> inbox;
+	//private ArrayList<MessageString> sentMessages;
 	private LocalDateTime createdDateTime;
 	
 	public int getAccountNumber() {
@@ -40,8 +41,14 @@ public abstract class Account implements Cloneable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public ArrayList<Message> getInbox() {
+	public ArrayList<MessageString> getInbox() {
 		return inbox;
+	}
+	/*public ArrayList<MessageString> getSentMessages() {
+		return sentMessages;
+	}*/
+	public void setInbox(ArrayList<MessageString> inbox) {
+		this.inbox = inbox;
 	}
 	public static int getNumberOfAccounts(){
 		return NUMBER_OF_ACCOUNTS;
@@ -54,7 +61,8 @@ public abstract class Account implements Cloneable{
 	}*/
 	
 	protected Account(String username, String password) {
-		this.inbox = new ArrayList<Message>(MessagingService.MAX_NUMBER_OF_MESSAGES);
+		this.inbox = new ArrayList<MessageString>(MessagingService.MAX_NUMBER_OF_MESSAGES_STRINGS);
+		//this.sentMessages = new ArrayList<MessageString>(MessagingService.MAX_NUMBER_OF_MESSAGES_STRINGS);
 		this.accountNumber = ++NUMBER_OF_ACCOUNTS;
 		this.loginAttempts = 0;
 		this.username = username;
@@ -74,7 +82,8 @@ public abstract class Account implements Cloneable{
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Account clonedAccount = (Account)super.clone();
-		clonedAccount.inbox = (ArrayList<Message>)this.inbox.clone();
+		clonedAccount.inbox = (ArrayList<MessageString>)this.inbox.clone();
+		//clonedAccount.sentMessages = (ArrayList<MessageString>)this.sentMessages.clone();
 		clonedAccount.accountNumber = ++NUMBER_OF_ACCOUNTS;
 		clonedAccount.createdDateTime = LocalDateTime.now();
 		return clonedAccount;

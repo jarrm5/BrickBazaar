@@ -8,6 +8,7 @@ import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
 import com.jarrm5.model.Message;
+import com.jarrm5.model.MessageString;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.model.UserAccount.Gender;
 import com.jarrm5.util.MessagingService;
@@ -23,22 +24,17 @@ public class App {
 	}
 	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
-			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], null, "Testing message service");
-			MessagingService.sendMessageToUser(adminAccounts[0], userAccounts[1], "Check your portfolio", "Bitcoin is up big today ($37k)");
-			//adminAccounts[0].banUser(userAccounts[0]);
-			MessagingService.sendMessageToUser(userAccounts[0], userAccounts[1], "Hello again", "Still testing..");
-			MessagingService.sendMessageToUser(userAccounts[2], userAccounts[1], "YOU SUCK", "YOU DOO DOO HEAD!");
-			MessagingService.sendMessageToUser(adminAccounts[1], userAccounts[1], "Daily reminder", "Don't forget to drink your ovaltine.");
-			//ArrayList<Message> filterResult = MessagingService.getMessagesByAccount(userAccounts[1], userAccounts[0]);
-			MessagingService.MessageSortUtil msu = new MessagingService.MessageSortUtil();
-			userAccounts[1].getInbox().sort(msu);
+			MessagingService.sendMessage(userAccounts[0], userAccounts[1], null, "Testing message service");
+			MessagingService.sendMessage(userAccounts[0], userAccounts[1], "Problem?", "Stepping up to me bruh?");
+			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[1],userAccounts[0], "Bitcoin is up big today ($37k)");
+			MessagingService.sendMessage(userAccounts[0].getInbox().get(0),userAccounts[0],userAccounts[1], "Still testing..");
+			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[0],userAccounts[1],"YOU SUCK, YOU DOO DOO HEAD!");
+			MessagingService.sendMessage(userAccounts[1].getInbox().get(1),userAccounts[1],userAccounts[0], "Ya bruh your so intimidating");
+			System.out.println(userAccounts[0].getInbox().get(0));
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
 		
-		for (Account u : userAccounts) {
-			MessagingService.printMessages(u);
-		}
 	}
 	public static void BuddyListTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
