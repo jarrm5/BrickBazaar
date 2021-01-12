@@ -8,7 +8,7 @@ import com.jarrm5.model.UserAccount;
 
 public class BuddyListService {
 	
-	public static final int MAX_NUMBER_OF_BUDDIES = 2;
+	public static final int MAX_NUMBER_OF_BUDDIES = 5;
 	
 	//Only UserAccounts can add other users.  Other users include Admin Accounts.. so "other" can be of generic type "Account"
 	public static boolean addUserToBuddyList(UserAccount account, Account other) throws AccountException{

@@ -3,6 +3,7 @@ package com.jarrm5.util;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.model.Account;
@@ -18,14 +19,15 @@ public class App {
 	public static void main(String[] args) {
 		UserAccount[] userAccounts = UserAccount.getAccounts();
 		AdminAccount[] adminAccounts = AdminAccount.getAccounts();
-		//BuddyListTest(userAccounts,adminAccounts);
-		MessagingTest(userAccounts, adminAccounts);
+		BuddyListTest(userAccounts,adminAccounts);
+		//MessagingTest(userAccounts, adminAccounts);
 		
 	}
 	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
 			MessagingService.sendMessage(userAccounts[0], userAccounts[1], null, "Testing message service");
 			MessagingService.sendMessage(userAccounts[0], userAccounts[1], "Problem?", "Stepping up to me bruh?");
+			//AdminService.banUser(adminAccounts[0], userAccounts[0]);
 			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[1],userAccounts[0], "Bitcoin is up big today ($37k)");
 			MessagingService.sendMessage(userAccounts[0].getInbox().get(0),userAccounts[0],userAccounts[1], "Still testing..");
 			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[0],userAccounts[1],"YOU SUCK, YOU DOO DOO HEAD!");
@@ -38,14 +40,16 @@ public class App {
 	}
 	public static void BuddyListTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
-			AdminService.banUser(adminAccounts[1],userAccounts[0]);
-			//AdminService.banUser(adminAccounts[1],userAccounts[0]);
-			AdminService.unbanUser(adminAccounts[1],userAccounts[0]);
-			AdminService.unbanUser(adminAccounts[1],userAccounts[0]);
 			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[0]);
 			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
-			//BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
-			BuddyListService.addUserToBuddyList(userAccounts[0], new UserAccount("sevans,","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE));
+			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[2]);
+			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[1]);
+			userAccounts[0].getBuddyList().sort(new Comparator<Account>() {
+				@Override
+				public int compare(Account acc1, Account acc2) {
+					return acc1.getUsername().compareToIgnoreCase(acc2.getUsername());
+				}
+			});
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}

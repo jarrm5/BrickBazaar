@@ -18,6 +18,7 @@ public class MessagingService {
 	//break inbox into inbox between account users; and an inbox for between account user and admin user
 	public final static int MAX_NUMBER_OF_MESSAGES_STRINGS = 5;
 	
+	//Used to create a new MessageString (conversation) between users
 	public static void sendMessage(Account sender, Account recipient, String subject, String message) throws AppGenericException {	
 		Message toSend = new Message(recipient,sender,subject,message);
 		try {
@@ -31,6 +32,7 @@ public class MessagingService {
 		recipient.getInbox().add(newMsgString);
 	}
 	
+	//Used to reply to an existing message in a MessageString
 	public static void sendMessage(MessageString msgString,Account sender, Account recipient, String message) throws AppGenericException{
 		Message toSend = new Message(recipient,sender,msgString.getMessageString().peek().getSubject(),message);
 		
