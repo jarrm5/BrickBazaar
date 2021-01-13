@@ -144,8 +144,9 @@ public class UserAccount extends Account implements Cloneable{
 	@Override
 	public boolean equals(Object other) {
 		try {
-			UserAccount toCompare = (UserAccount) other;
-			return super.equals((Account) other) && this.userAccountNumber == toCompare.userAccountNumber;
+			//UserAccount toCompare = (UserAccount) other;
+			//return super.equals((Account) other) && this.userAccountNumber == toCompare.userAccountNumber;
+			return super.equals((Account) other);
 		}
 		catch(ClassCastException err) {
 			System.out.println(err.getMessage());

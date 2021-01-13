@@ -1,5 +1,8 @@
 package com.jarrm5.util;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
 import com.jarrm5.exception.AccountException;
 import com.jarrm5.exception.UserAccountException;
 import com.jarrm5.exception.AppGenericException.ErrorReason;
@@ -35,6 +38,16 @@ public class BuddyListService {
 		else {
 			System.out.println("buddy list empty for " + account.getUsername());
 		}
-		
 	}
+	
+	public static void sortBuddyListByUsername(ArrayList<Account> buddyList) {
+		buddyList.sort(new Comparator<Account>() {
+				@Override
+				public int compare(Account acc1, Account acc2) {
+					return acc1.getUsername().compareToIgnoreCase(acc2.getUsername());
+				}
+		});
+	}
+	
+	
 }

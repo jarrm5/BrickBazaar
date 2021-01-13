@@ -44,8 +44,9 @@ public class AdminAccount extends Account implements Cloneable{
 	@Override
 	public boolean equals(Object other) {
 		try {
-			AdminAccount toCompare = (AdminAccount) other;
-			return super.equals((Account) other) && this.adminAccountNumber == toCompare.adminAccountNumber; 
+			//AdminAccount toCompare = (AdminAccount) other;
+			//return super.equals((Account) other) && this.adminAccountNumber == toCompare.adminAccountNumber;
+			return super.equals((Account) other);
 		}
 		catch(ClassCastException err) {
 			System.out.println(err.getMessage());

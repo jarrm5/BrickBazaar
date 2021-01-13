@@ -1,10 +1,5 @@
 package com.jarrm5.util;
 
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
@@ -44,18 +39,11 @@ public class App {
 			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
 			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[2]);
 			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[1]);
-			userAccounts[0].getBuddyList().sort(new Comparator<Account>() {
-				@Override
-				public int compare(Account acc1, Account acc2) {
-					return acc1.getUsername().compareToIgnoreCase(acc2.getUsername());
-				}
-			});
+			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[1]);
+			BuddyListService.sortBuddyListByUsername(userAccounts[0].getBuddyList());
+			BuddyListService.printAllBuddies(userAccounts[0]);
 		} catch (AppGenericException e) {
 			e.printStackTrace();
-		}
-		
-		for (UserAccount u : userAccounts) {
-			BuddyListService.printAllBuddies(u);
 		}
 	}
 	public static void LoginTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
