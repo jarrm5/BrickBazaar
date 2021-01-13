@@ -1,6 +1,7 @@
 package com.jarrm5.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -9,12 +10,13 @@ import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.model.Message;
+import com.jarrm5.model.MessageString;
 
 public class SearchingService {
 	
 	//AdminAccounts get shallow copies so they can manipulate the UserAccount; but they should get read only rights with respect to other admin accounts 
 	//UserAccounts get deep copies since they have read only rights with respect to any other accounts
-	public static ArrayList<UserAccount> getAccountsWithPredicate(Account searcher, UserAccount[] accounts, Predicate<UserAccount> tester){
+	public static ArrayList<UserAccount> getUserAccountsWithPredicate(Account searcher, UserAccount[] accounts, Predicate<UserAccount> tester){
 		
 		ArrayList<UserAccount> result = new ArrayList<UserAccount>();
 		
@@ -33,15 +35,19 @@ public class SearchingService {
 		}
 		return result;
 	}
-	/*public static ArrayList<Message> getMessagesWithPredicate(Account searcher, Predicate<Message> tester){
-		ArrayList<Message> result = new ArrayList<Message>();
-		for (Message m : searcher.getInbox()) {
-			if(tester.test(m)) {
-				result.add(m);
+	
+	//Search the inbox of MessageString for a keyword in the subject line.  Return MessageStrings that match and print the conversation
+	public static void getMessagesWithPredicate(Account searcher,Predicate<Message> tester, Consumer<Message> action){
+		for (MessageString ms : searcher.getInbox()) {
+			for(Iterator<Message> m = ms.getMessageString().iterator(); m.hasNext();) {
+				Message msg = (Message) m.next();
+				if(tester.test(msg)) {
+					action.accept(msg);
+				}
 			}
 		}
-		return result;
-	}*/
+	}
+	
 	public static <X, Y> ArrayList<Y> searchElements(Iterable<X> source,Consumer<Y> block,Predicate<X> tester,Function<X,Y> mapper){
 		ArrayList<Y> result = new ArrayList<Y>();
 		for (X x : source) {

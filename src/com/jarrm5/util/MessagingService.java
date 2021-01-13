@@ -62,19 +62,9 @@ public class MessagingService {
 		}
 	}
 	
-	/*public static void printMessages(Account account) {
-		if (!account.getInbox().isEmpty()) {
-			System.out.println("Inbox messages for user " + account.getUsername());
-			for (Message message : account.getInbox()) {
-				System.out.println(message + "\n");
-			}
-		}
-		else {
-			System.out.println("Inbox empty for " + account.getUsername());
-		}
-	}
 	
-	public static ArrayList<Message> getMessagesByAccount(Account account, Account target){
+	
+	/*public static ArrayList<Message> getMessagesByAccount(Account account, Account target){
 		ArrayList<Message> result = new ArrayList<Message>();
 		for (Message message : account.getInbox()) {
 			if (message.getSender().getUsername().equals(target.getUsername())) result.add(message);

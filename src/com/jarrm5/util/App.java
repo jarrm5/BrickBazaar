@@ -1,6 +1,7 @@
 package com.jarrm5.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.jarrm5.exception.AdminAccountException;
 import com.jarrm5.exception.AppGenericException;
@@ -18,8 +19,8 @@ public class App {
 		UserAccount[] userAccounts = UserAccount.getAccounts();
 		AdminAccount[] adminAccounts = AdminAccount.getAccounts();
 		//BuddyListTest(userAccounts,adminAccounts);
-		//MessagingTest(userAccounts, adminAccounts);
-		SearchingServiceTest(userAccounts,adminAccounts);
+		MessagingTest(userAccounts, adminAccounts);
+		//SearchingServiceTest(userAccounts,adminAccounts);
 	}
 	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
@@ -30,7 +31,12 @@ public class App {
 			MessagingService.sendMessage(userAccounts[0].getInbox().get(0),userAccounts[0],userAccounts[1], "Still testing..");
 			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[0],userAccounts[1],"YOU SUCK, YOU DOO DOO HEAD!");
 			MessagingService.sendMessage(userAccounts[1].getInbox().get(1),userAccounts[1],userAccounts[0], "Ya bruh your so intimidating");
-			System.out.println(userAccounts[0].getInbox().get(0));
+			MessagingService.sendMessage(userAccounts[2],userAccounts[0],null, "HODL YOUR BITCOIN!");
+			
+			SearchingService.getMessagesWithPredicate(userAccounts[0],
+					(Message m) -> m.getMessage().toLowerCase().contains("bitcoin"),
+					(Message m) -> System.out.println(m));
+			
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
@@ -77,9 +83,9 @@ public class App {
 		}
 	}
 	public static void SearchingServiceTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
-		ArrayList<UserAccount> adminSearchResults = SearchingService.getAccountsWithPredicate(adminAccounts[0], userAccounts, 
+		ArrayList<UserAccount> adminSearchResults = SearchingService.getUserAccountsWithPredicate(adminAccounts[0], userAccounts, 
 				(UserAccount acc) -> acc.getGender() == UserAccount.Gender.FEMALE);
-		ArrayList<UserAccount> userSearchResults = SearchingService.getAccountsWithPredicate(userAccounts[0], userAccounts, 
+		ArrayList<UserAccount> userSearchResults = SearchingService.getUserAccountsWithPredicate(userAccounts[0], userAccounts, 
 				(UserAccount acc) -> { 
 					return acc.getEmail() != null && acc.getEmail().endsWith("protonmail.com");
 				});
