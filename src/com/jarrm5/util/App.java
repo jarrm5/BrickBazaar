@@ -1,5 +1,8 @@
 package com.jarrm5.util;
 
+import java.util.ArrayList;
+
+import com.jarrm5.exception.AdminAccountException;
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
@@ -14,9 +17,9 @@ public class App {
 	public static void main(String[] args) {
 		UserAccount[] userAccounts = UserAccount.getAccounts();
 		AdminAccount[] adminAccounts = AdminAccount.getAccounts();
-		BuddyListTest(userAccounts,adminAccounts);
+		//BuddyListTest(userAccounts,adminAccounts);
 		//MessagingTest(userAccounts, adminAccounts);
-		
+		SearchingServiceTest(userAccounts,adminAccounts);
 	}
 	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
 		try {
@@ -71,6 +74,24 @@ public class App {
 		
 		for (UserAccount u : userAccounts) {
 			System.out.println(u.getUsername() + ": " + u.getLoginAttempts());
+		}
+	}
+	public static void SearchingServiceTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
+		ArrayList<UserAccount> adminSearchResults = SearchingService.getAccountsWithPredicate(adminAccounts[0], userAccounts, 
+				(UserAccount acc) -> acc.getGender() == UserAccount.Gender.FEMALE);
+		ArrayList<UserAccount> userSearchResults = SearchingService.getAccountsWithPredicate(userAccounts[0], userAccounts, 
+				(UserAccount acc) -> { 
+					return acc.getEmail() != null && acc.getEmail().endsWith("protonmail.com");
+				});
+		//Demonstrates UserAccounts doing the searching get deep copies UserAccounts
+		userSearchResults.get(0).setBanned(true);
+		
+		try {
+			//Demonstrates AdminAccounts doing the searching get a shallow copy of UserAccounts
+			AdminService.banUser(adminAccounts[0], adminSearchResults.get(0));
+		} catch (AppGenericException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

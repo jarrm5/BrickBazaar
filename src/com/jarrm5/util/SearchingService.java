@@ -14,17 +14,18 @@ public class SearchingService {
 	
 	//AdminAccounts get shallow copies so they can manipulate the UserAccount; but they should get read only rights with respect to other admin accounts 
 	//UserAccounts get deep copies since they have read only rights with respect to any other accounts
-	public static ArrayList<Account> getAccountsWithPredicate(Account searcher, Account[] accounts, Predicate<Account> tester){
+	public static ArrayList<UserAccount> getAccountsWithPredicate(Account searcher, UserAccount[] accounts, Predicate<UserAccount> tester){
 		
-		ArrayList<Account> result = new ArrayList<Account>();
+		ArrayList<UserAccount> result = new ArrayList<UserAccount>();
 		
-		for (Account acc : accounts) {
-			if(searcher instanceof AdminAccount && accounts instanceof UserAccount[] && tester.test(acc)) {
+		for (UserAccount acc : accounts) {
+			//if(searcher instanceof AdminAccount && accounts instanceof UserAccount[] && tester.test(acc)) {
+			if(searcher instanceof AdminAccount && tester.test(acc)) {
 				result.add(acc);
 			}
 			else if(tester.test(acc)) {
 				try {
-					result.add((Account)acc.clone());
+					result.add((UserAccount)acc.clone());
 				} catch (CloneNotSupportedException e) {
 					System.out.println(e.getStackTrace());
 				}
