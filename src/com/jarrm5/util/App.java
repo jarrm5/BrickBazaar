@@ -1,5 +1,6 @@
 package com.jarrm5.util;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,64 +17,76 @@ import com.jarrm5.util.MessagingService;
 public class App {
 	//Added a comment
 	public static void main(String[] args) {
-		UserAccount[] userAccounts = UserAccount.getAccounts();
-		AdminAccount[] adminAccounts = AdminAccount.getAccounts();
+		ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
+		ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
 		//BuddyListTest(userAccounts,adminAccounts);
 		MessagingTest(userAccounts, adminAccounts);
 		//SearchingServiceTest(userAccounts,adminAccounts);
 	}
-	public static void MessagingTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
+	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
-			MessagingService.sendMessage(userAccounts[0], userAccounts[1], null, "Testing message service");
-			MessagingService.sendMessage(userAccounts[0], userAccounts[1], "Problem?", "Stepping up to me bruh?");
-			//AdminService.banUser(adminAccounts[0], userAccounts[0]);
-			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[1],userAccounts[0], "Bitcoin is up big today ($37k)");
-			MessagingService.sendMessage(userAccounts[0].getInbox().get(0),userAccounts[0],userAccounts[1], "Still testing..");
-			MessagingService.sendMessage(userAccounts[1].getInbox().get(0),userAccounts[0],userAccounts[1],"YOU SUCK, YOU DOO DOO HEAD!");
-			MessagingService.sendMessage(userAccounts[1].getInbox().get(1),userAccounts[1],userAccounts[0], "Ya bruh your so intimidating");
-			MessagingService.sendMessage(userAccounts[2],userAccounts[0],null, "HODL YOUR BITCOIN!");
+			MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), null, "Testing message service");
+			MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), "Problem?", "Stepping up to me bruh?");
+			//AdminService.banUser(adminAccounts.get(0), userAccounts.get(0));
+			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0), "Bitcoin is up big today ($37k)");
+			MessagingService.sendMessage(userAccounts.get(0).getInbox().get(0),userAccounts.get(0),userAccounts.get(1), "Still testing..");
+			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),"YOU SUCK, YOU DOO DOO HEAD!");
+			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
+			MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
 			
-			SearchingService.getMessagesWithPredicate(userAccounts[0],
+			SearchingService.getMessagesWithPredicate(userAccounts.get(0),
 					(Message m) -> m.getMessage().toLowerCase().contains("bitcoin"),
 					(Message m) -> System.out.println(m));
+			
+			//Lambda that sends a message to a user whose bday is today from a friendly admin
+			SearchingService.searchElementsGenericAndProcess(userAccounts, 
+				u -> ((UserAccount) u).getBirthday().getDayOfMonth() ==  LocalDate.now().getDayOfMonth() && 
+					 ((UserAccount) u).getBirthday().getMonthValue() == LocalDate.now().getMonthValue(), 
+				u -> {
+					try {
+						MessagingService.sendMessage(adminAccounts.get(0), u, "Happy " + u.getAge() + " birthday!", "Sincerely, " + adminAccounts.get(0).getUsername());
+					} catch (AppGenericException e) {
+						e.printStackTrace();
+					}
+				});
 			
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
 		
 	}
-	public static void BuddyListTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
+	public static void BuddyListTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
-			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[0]);
-			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[1]);
-			BuddyListService.addUserToBuddyList(userAccounts[0], userAccounts[2]);
-			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[1]);
-			BuddyListService.addUserToBuddyList(userAccounts[0], adminAccounts[1]);
-			BuddyListService.sortBuddyListByUsername(userAccounts[0].getBuddyList());
-			BuddyListService.printAllBuddies(userAccounts[0]);
+			BuddyListService.addUserToBuddyList(userAccounts.get(0), adminAccounts.get(0));
+			BuddyListService.addUserToBuddyList(userAccounts.get(0), userAccounts.get(1));
+			BuddyListService.addUserToBuddyList(userAccounts.get(0), userAccounts.get(2));
+			BuddyListService.addUserToBuddyList(userAccounts.get(0), adminAccounts.get(1));
+			BuddyListService.addUserToBuddyList(userAccounts.get(0), adminAccounts.get(1));
+			BuddyListService.sortBuddyListByUsername(userAccounts.get(0).getBuddyList());
+			BuddyListService.printAllBuddies(userAccounts.get(0));
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
 	}
-	public static void LoginTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
-		//userAccounts[0].setBanned(true);
+	public static void LoginTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
+		//userAccounts.get(0).setBanned(true);
 		try {
-			LoginService.login(userAccounts[0], "asfas");
+			LoginService.login(userAccounts.get(0), "asfas");
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
 		try {
-			LoginService.login(userAccounts[0], "password1");
+			LoginService.login(userAccounts.get(0), "password1");
 		} catch (AppGenericException e) {
 			e.printStackTrace();
 		}
 //		try {
-//			LoginService.login(userAccounts[0], "password1");
+//			LoginService.login(userAccounts.get(0), "password1");
 //		} catch (AppGenericException e) {
 //			e.printStackTrace();
 //		}
 //		try {
-//			LoginService.login(adminAccounts[0], "asdfas");
+//			LoginService.login(adminAccounts.get(0), "asdfas");
 //		} catch (AppGenericException e) {
 //			e.printStackTrace();
 //		}
@@ -82,10 +95,10 @@ public class App {
 			System.out.println(u.getUsername() + ": " + u.getLoginAttempts());
 		}
 	}
-	public static void SearchingServiceTest(UserAccount[] userAccounts,AdminAccount[] adminAccounts) {
-		ArrayList<UserAccount> adminSearchResults = SearchingService.getUserAccountsWithPredicate(adminAccounts[0], userAccounts, 
+	public static void SearchingServiceTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
+		ArrayList<UserAccount> adminSearchResults = SearchingService.getUserAccountsWithPredicate(adminAccounts.get(0), userAccounts, 
 				(UserAccount acc) -> acc.getGender() == UserAccount.Gender.FEMALE);
-		ArrayList<UserAccount> userSearchResults = SearchingService.getUserAccountsWithPredicate(userAccounts[0], userAccounts, 
+		ArrayList<UserAccount> userSearchResults = SearchingService.getUserAccountsWithPredicate(userAccounts.get(0), userAccounts, 
 				(UserAccount acc) -> { 
 					return acc.getEmail() != null && acc.getEmail().endsWith("protonmail.com");
 				});
@@ -94,7 +107,7 @@ public class App {
 		
 		try {
 			//Demonstrates AdminAccounts doing the searching get a shallow copy of UserAccounts
-			AdminService.banUser(adminAccounts[0], adminSearchResults.get(0));
+			AdminService.banUser(adminAccounts.get(0), adminSearchResults.get(0));
 		} catch (AppGenericException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

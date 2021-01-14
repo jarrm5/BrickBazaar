@@ -16,7 +16,7 @@ public class SearchingService {
 	
 	//AdminAccounts get shallow copies so they can manipulate the UserAccount; but they should get read only rights with respect to other admin accounts 
 	//UserAccounts get deep copies since they have read only rights with respect to any other accounts
-	public static ArrayList<UserAccount> getUserAccountsWithPredicate(Account searcher, UserAccount[] accounts, Predicate<UserAccount> tester){
+	public static ArrayList<UserAccount> getUserAccountsWithPredicate(Account searcher, ArrayList<UserAccount> accounts, Predicate<UserAccount> tester){
 		
 		ArrayList<UserAccount> result = new ArrayList<UserAccount>();
 		
@@ -47,15 +47,12 @@ public class SearchingService {
 			}
 		}
 	}
-	
-	public static <X, Y> ArrayList<Y> searchElements(Iterable<X> source,Consumer<Y> block,Predicate<X> tester,Function<X,Y> mapper){
-		ArrayList<Y> result = new ArrayList<Y>();
+	//Generic method to search a list using some test expression, then perform an action on it
+	public static <X> void searchElementsGenericAndProcess(Iterable<X> source,Predicate<X> tester,Consumer<X> block){
 		for (X x : source) {
 			if (tester.test(x)) {
-				Y data = mapper.apply(x);
-				block.accept(data);
+				block.accept(x);
 			}
 		}
-		return result;
 	}
 }

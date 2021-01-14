@@ -106,16 +106,16 @@ public class UserAccount extends Account implements Cloneable{
 		this.buddyList = new ArrayList<Account>(BuddyListService.MAX_NUMBER_OF_BUDDIES);
 	}
 	
-	public static UserAccount[] getAccounts() {
-		return new UserAccount[] { 
-				new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989, 1, 10),Gender.MALE),
-				new UserAccount("sevans","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE),
-				new UserAccount("Crypto Casey","password1","Casey","Leigh","cryptocasey@yahoo.com",LocalDate.of(1989,2,21),Gender.FEMALE),
-				new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE),
-				new UserAccount("Victor 135","password1","Victor","Ginsburg",null,LocalDate.of(1996,7,7),Gender.MALE),
-				new UserAccount("Welshers","password1","Duncan","Ramsey",null,LocalDate.of(1988,10,31),Gender.MALE),
-				new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1960,10,11),Gender.FEMALE)
-		};
+	public static ArrayList<UserAccount> getAccounts() {
+		ArrayList<UserAccount> users = new ArrayList<UserAccount>();
+		users.add(new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1900,1,14),Gender.MALE));
+		users.add(new UserAccount("sevans","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE));
+		users.add(new UserAccount("Crypto Casey","password1","Casey","Leigh","cryptocasey@yahoo.com",LocalDate.of(1989,1,14),Gender.FEMALE));
+		users.add(new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE));
+		users.add(new UserAccount("Victor 135","password1","Victor","Ginsburg",null,LocalDate.of(1996,7,7),Gender.MALE));
+		users.add(new UserAccount("Welshers","password1","Duncan","Ramsey",null,LocalDate.of(1988,10,31),Gender.MALE));
+		users.add(new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1960,10,11),Gender.FEMALE));
+		return users;
 	}
 	
 	

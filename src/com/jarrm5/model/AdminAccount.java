@@ -29,11 +29,11 @@ public class AdminAccount extends Account implements Cloneable{
 		this(username, password,++NUMBER_OF_ADMIN_ACCOUNTS,0);
 	}
 	
-	public static AdminAccount[] getAccounts() {
-		return new AdminAccount[] { 
-				new AdminAccount("Nicodemus","password1"),
-				new AdminAccount("Tryclops","password1"),
-		};
+	public static ArrayList<AdminAccount> getAccounts() {
+		ArrayList<AdminAccount> accounts = new ArrayList<AdminAccount>();
+		accounts.add(new AdminAccount("Nicodemus","password1"));
+		accounts.add(new AdminAccount("Tryclops","password1"));
+		return accounts;
 	}
 	
 	@Override
