@@ -1,5 +1,6 @@
 package com.jarrm5.util;
 
+import java.lang.Boolean;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -37,7 +38,7 @@ public class SearchingService {
 	}
 	
 	//Search the inbox of MessageString for a keyword in the subject line.  Return MessageStrings that match and print the conversation
-	public static void getMessagesWithPredicate(Account searcher,Predicate<Message> tester, Consumer<Message> action){
+	/*public static void getMessagesWithPredicate(Account searcher,Predicate<Message> tester, Consumer<Message> action){
 		for (MessageString ms : searcher.getInbox()) {
 			for(Iterator<Message> m = ms.getMessageString().iterator(); m.hasNext();) {
 				Message msg = (Message) m.next();
@@ -46,13 +47,12 @@ public class SearchingService {
 				}
 			}
 		}
-	}
+	}*/
 	//Generic method to search a list using some test expression, then perform an action on it
-	public static <X> void searchElementsGenericAndProcess(Iterable<X> source,Predicate<X> tester,Consumer<X> block){
-		for (X x : source) {
-			if (tester.test(x)) {
-				block.accept(x);
-			}
+	public static <T,Boolean> void searchElementsGenericAndProcess(Iterable<T> source,Function<T,Boolean> function,Consumer<T> block){
+		
+		for (T t : source) {
+			if(function.apply(t) == java.lang.Boolean.TRUE) block.accept(t);
 		}
 	}
 }

@@ -108,7 +108,7 @@ public class UserAccount extends Account implements Cloneable{
 	
 	public static ArrayList<UserAccount> getAccounts() {
 		ArrayList<UserAccount> users = new ArrayList<UserAccount>();
-		users.add(new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1900,1,14),Gender.MALE));
+		users.add(new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989,1,10),Gender.MALE));
 		users.add(new UserAccount("sevans","password1","Sheldon","Evans","sevans@gmail.com",LocalDate.of(1996,11, 11),Gender.MALE));
 		users.add(new UserAccount("Crypto Casey","password1","Casey","Leigh","cryptocasey@yahoo.com",LocalDate.of(1989,1,14),Gender.FEMALE));
 		users.add(new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE));

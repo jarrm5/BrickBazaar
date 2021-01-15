@@ -34,11 +34,7 @@ public class App {
 			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
 			MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
 			
-			SearchingService.getMessagesWithPredicate(userAccounts.get(0),
-					(Message m) -> m.getMessage().toLowerCase().contains("bitcoin"),
-					(Message m) -> System.out.println(m));
-			
-			//Lambda that sends a message to a user whose bday is today from a friendly admin
+			//Lambda that sends a message to a user whose birthday is today from a friendly admin
 			SearchingService.searchElementsGenericAndProcess(userAccounts, 
 				u -> ((UserAccount) u).getBirthday().getDayOfMonth() ==  LocalDate.now().getDayOfMonth() && 
 					 ((UserAccount) u).getBirthday().getMonthValue() == LocalDate.now().getMonthValue(), 
@@ -49,6 +45,12 @@ public class App {
 						e.printStackTrace();
 					}
 				});
+			//Lambda that searches UserAccounts inboxes for "bitcoin"
+			userAccounts.forEach(u -> u.getInbox().forEach(ms -> {
+				SearchingService.searchElementsGenericAndProcess(ms.getMessageString(), 
+				m -> m.getMessage().toLowerCase().contains("bitcoin"), 
+				m -> System.out.println(m));
+			}));
 			
 		} catch (AppGenericException e) {
 			e.printStackTrace();
