@@ -25,14 +25,16 @@ public class App {
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
-			MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), null, "Testing message service");
-			MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), "Problem?", "Stepping up to me bruh?");
+			//MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), null, "Testing message service");
+			MessagingService.sendMessage(null,userAccounts.get(0),userAccounts.get(1),null,"Hi, how is bitcoin looking today?");
+			//MessagingService.sendMessage(null,userAccounts.get(0),userAccounts.get(1),"Another Question","Also, What will we be talking about today?");
 			//AdminService.banUser(adminAccounts.get(0), userAccounts.get(0));
-			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0), "Bitcoin is up big today ($37k)");
-			MessagingService.sendMessage(userAccounts.get(0).getInbox().get(0),userAccounts.get(0),userAccounts.get(1), "Still testing..");
-			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),"YOU SUCK, YOU DOO DOO HEAD!");
-			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
-			MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
+			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getInbox().get(0).getMessageString().peek().getSubject(),"Bitcoin is up big today ($37k)");
+			MessagingService.sendMessage(userAccounts.get(0).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),userAccounts.get(0).getInbox().get(0).getMessageString().peek().getSubject(),"Thanks for the heads up!");
+			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getInbox().get(0).getMessageString().peek().getSubject(),"Today we will be talking about self respect.");
+			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),"YOU SUCK, YOU DOO DOO HEAD!");
+			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
+			//MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
 			
 			//Lambda that sends a message to a user whose birthday is today from a friendly admin
 			SearchingService.searchElementsGenericAndProcess(userAccounts, 
@@ -40,17 +42,17 @@ public class App {
 					 ((UserAccount) u).getBirthday().getMonthValue() == LocalDate.now().getMonthValue(), 
 				u -> {
 					try {
-						MessagingService.sendMessage(adminAccounts.get(0), u, "Happy " + u.getAge() + " birthday!", "Sincerely, " + adminAccounts.get(0).getUsername());
+						MessagingService.sendMessage(null,adminAccounts.get(0), u, "Happy " + u.getAge() + " birthday!", "Sincerely, " + adminAccounts.get(0).getUsername());
 					} catch (AppGenericException e) {
 						e.printStackTrace();
 					}
 				});
 			//Lambda that searches UserAccounts inboxes for "bitcoin"
-			userAccounts.forEach(u -> u.getInbox().forEach(ms -> {
+			/*userAccounts.forEach(u -> u.getInbox().forEach(ms -> {
 				SearchingService.searchElementsGenericAndProcess(ms.getMessageString(), 
 				m -> m.getMessage().toLowerCase().contains("bitcoin"), 
 				m -> System.out.println(m));
-			}));
+			}));*/
 			
 		} catch (AppGenericException e) {
 			e.printStackTrace();

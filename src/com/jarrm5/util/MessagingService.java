@@ -14,27 +14,11 @@ import com.jarrm5.model.UserAccount;
 
 public class MessagingService {
 	
-	//add reply function to maintain same subject and create a thread of messages
-	//break inbox into inbox between account users; and an inbox for between account user and admin user
 	public final static int MAX_NUMBER_OF_MESSAGES_STRINGS = 5;
 	
-	//Used to create a new MessageString (conversation) between users
-	public static void sendMessage(Account sender, Account recipient, String subject, String message) throws AppGenericException {	
+	public static void sendMessage(MessageString msgString, Account sender, Account recipient, String subject, String message) throws AppGenericException{
+		
 		Message toSend = new Message(recipient,sender,subject,message);
-		try {
-			validateSendMessage(toSend);
-		}
-		catch(AppGenericException error) {
-			throw error;
-		}
-		MessageString newMsgString = new MessageString();
-		newMsgString.getMessageString().push(toSend);
-		recipient.getInbox().add(newMsgString);
-	}
-	
-	//Used to reply to an existing message in a MessageString
-	public static void sendMessage(MessageString msgString,Account sender, Account recipient, String message) throws AppGenericException{
-		Message toSend = new Message(recipient,sender,msgString.getMessageString().peek().getSubject(),message);
 		
 		try {
 			validateSendMessage(toSend);
@@ -43,10 +27,19 @@ public class MessagingService {
 			throw error;
 		}
 		
-		msgString.getMessageString().push(toSend);
-		
-		if(!recipient.getInbox().contains(msgString)) {
-			recipient.getInbox().add(msgString);
+		//This is a new thread of messages
+		if(msgString == null) {
+			
+			MessageString newMsgString = new MessageString();
+			newMsgString.getMessageString().push(toSend);
+			recipient.getInbox().add(newMsgString);
+		}
+		//This is an existing thread of messages (reply)
+		else {
+			msgString.getMessageString().push(toSend);
+			if(!recipient.getInbox().contains(msgString)) {
+				recipient.getInbox().add(msgString);
+			}
 		}
 	}
 	
@@ -62,15 +55,6 @@ public class MessagingService {
 		}
 	}
 	
-	
-	
-	/*public static ArrayList<Message> getMessagesByAccount(Account account, Account target){
-		ArrayList<Message> result = new ArrayList<Message>();
-		for (Message message : account.getInbox()) {
-			if (message.getSender().getUsername().equals(target.getUsername())) result.add(message);
-		}
-		return result;
-	}*/
 	
 	static class MessageSortUtil implements Comparator{
 

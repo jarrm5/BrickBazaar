@@ -3,7 +3,7 @@ package com.jarrm5.model;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class MessageString {
+public class MessageString implements Cloneable {
 	
 	private Stack<Message> messageString;
 
@@ -13,6 +13,25 @@ public class MessageString {
 	
 	public Stack<Message> getMessageString() {
 		return messageString;
+	}
+	
+	
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		MessageString msgStr = (MessageString)super.clone();
+		msgStr.messageString = (Stack<Message>)this.messageString.clone();
+		return msgStr;
+	}
+	
+	public MessageString getMessageStringClone() {
+		try {
+			return (MessageString) this.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
