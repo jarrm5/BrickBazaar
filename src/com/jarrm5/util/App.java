@@ -27,11 +27,11 @@ public class App {
 		try {
 			//MessagingService.sendMessage(userAccounts.get(0), userAccounts.get(1), null, "Testing message service");
 			MessagingService.sendMessage(null,userAccounts.get(0),userAccounts.get(1),null,"Hi, how is bitcoin looking today?");
-			//MessagingService.sendMessage(null,userAccounts.get(0),userAccounts.get(1),"Another Question","Also, What will we be talking about today?");
+			MessagingService.sendMessage(null,userAccounts.get(0),userAccounts.get(1),"Another Question","Also, What will we be talking about today?");
 			//AdminService.banUser(adminAccounts.get(0), userAccounts.get(0));
-			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getInbox().get(0).getMessageString().peek().getSubject(),"Bitcoin is up big today ($37k)");
-			MessagingService.sendMessage(userAccounts.get(0).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),userAccounts.get(0).getInbox().get(0).getMessageString().peek().getSubject(),"Thanks for the heads up!");
-			MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getInbox().get(0).getMessageString().peek().getSubject(),"Today we will be talking about self respect.");
+			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(0).getMessageString().peek().getSubject(),"Bitcoin is up big today ($37k)");
+			MessagingService.sendMessage(userAccounts.get(0).getConversation().get(0),userAccounts.get(0),userAccounts.get(1),userAccounts.get(0).getConversation().get(0).getMessageString().peek().getSubject(),"Thanks for the heads up!");
+			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(1),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(1).getMessageString().peek().getSubject(),"Today we will be talking about self respect.");
 			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),"YOU SUCK, YOU DOO DOO HEAD!");
 			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
 			//MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
@@ -48,11 +48,11 @@ public class App {
 					}
 				});
 			//Lambda that searches UserAccounts inboxes for "bitcoin"
-			/*userAccounts.forEach(u -> u.getInbox().forEach(ms -> {
+			userAccounts.forEach(u -> u.getConversation().forEach(ms -> {
 				SearchingService.searchElementsGenericAndProcess(ms.getMessageString(), 
 				m -> m.getMessage().toLowerCase().contains("bitcoin"), 
 				m -> System.out.println(m));
-			}));*/
+			}));
 			
 		} catch (AppGenericException e) {
 			e.printStackTrace();

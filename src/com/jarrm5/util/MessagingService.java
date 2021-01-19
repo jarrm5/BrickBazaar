@@ -32,13 +32,13 @@ public class MessagingService {
 			
 			MessageString newMsgString = new MessageString();
 			newMsgString.getMessageString().push(toSend);
-			recipient.getInbox().add(newMsgString);
+			recipient.getConversation().add(newMsgString);
 		}
 		//This is an existing thread of messages (reply)
 		else {
 			msgString.getMessageString().push(toSend);
-			if(!recipient.getInbox().contains(msgString)) {
-				recipient.getInbox().add(msgString);
+			if(!recipient.getConversation().contains(msgString)) {
+				recipient.getConversation().add(msgString);
 			}
 		}
 	}
@@ -47,7 +47,7 @@ public class MessagingService {
 		if (message.getSender() instanceof UserAccount && ((UserAccount) message.getSender()).isBanned()) {
 			throw new UserAccountException(ErrorReason.USER_BANNED,(UserAccount)message.getSender());
 		}
-		else if(message.getRecipient().getInbox().size() >= MAX_NUMBER_OF_MESSAGES_STRINGS) {
+		else if(message.getRecipient().getConversation().size() >= MAX_NUMBER_OF_MESSAGES_STRINGS) {
 			throw new AccountException(ErrorReason.INBOX_FULL, message.getRecipient());
 		}
 		else if(message.getMessage().length() > Message.MAX_MESSAGE_LENGTH) {
