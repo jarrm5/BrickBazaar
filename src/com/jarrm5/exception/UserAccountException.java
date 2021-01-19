@@ -1,5 +1,6 @@
 package com.jarrm5.exception;
 
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.model.UserAccount;
 
 public class UserAccountException extends AccountException {
@@ -24,7 +25,4 @@ public class UserAccountException extends AccountException {
 		
 		return super.toString() + "\n" + errorReasonStr;
 	}
-//	public enum UserAccountErrorReason{
-//		USER_BANNED;
-//	}
 }

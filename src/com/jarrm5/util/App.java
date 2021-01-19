@@ -10,18 +10,21 @@ import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
 import com.jarrm5.model.Message;
 import com.jarrm5.model.MessageString;
+import com.jarrm5.model.SetItem;
 import com.jarrm5.model.UserAccount;
-import com.jarrm5.model.UserAccount.Gender;
+import com.jarrm5.constant.Gender;
 import com.jarrm5.util.MessagingService;
 
 public class App {
 	//Added a comment
 	public static void main(String[] args) {
-		ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
-		ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
+		//ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
+		//ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
 		//BuddyListTest(userAccounts,adminAccounts);
-		MessagingTest(userAccounts, adminAccounts);
+		//MessagingTest(userAccounts, adminAccounts);
 		//SearchingServiceTest(userAccounts,adminAccounts);
+		ArrayList<SetItem> items = SetItem.getSetItems();
+		items.forEach(i -> System.out.println(i));
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
@@ -101,7 +104,7 @@ public class App {
 	}
 	public static void SearchingServiceTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		ArrayList<UserAccount> adminSearchResults = SearchingService.getUserAccountsWithPredicate(adminAccounts.get(0), userAccounts, 
-				(UserAccount acc) -> acc.getGender() == UserAccount.Gender.FEMALE);
+				(UserAccount acc) -> acc.getGender() == Gender.FEMALE);
 		ArrayList<UserAccount> userSearchResults = SearchingService.getUserAccountsWithPredicate(userAccounts.get(0), userAccounts, 
 				(UserAccount acc) -> { 
 					return acc.getEmail() != null && acc.getEmail().endsWith("protonmail.com");

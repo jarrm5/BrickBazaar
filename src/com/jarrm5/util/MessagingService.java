@@ -5,7 +5,7 @@ import java.util.Comparator;
 import com.jarrm5.model.Account;
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.exception.MessagingException;
-import com.jarrm5.exception.AppGenericException.ErrorReason;
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.exception.AccountException;
 import com.jarrm5.exception.UserAccountException;
 import com.jarrm5.model.Message;

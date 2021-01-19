@@ -7,17 +7,15 @@ public abstract class Item {
 	private int itemNumber;
 	private String itemName;
 	private double weight;
-	private String description;
 	private Condition condition;
 	
 	public Item(String itemName) {
-		this(itemName,0.0,null,null);
+		this(itemName,0.0,null);
 	}
 
-	public Item(String itemName, double weight, String description, Condition condition) {
+	public Item(String itemName, double weight, Condition condition) {
 		this.itemName = itemName;
 		this.weight = weight;
-		this.description = description;
 		this.condition = condition;
 	}
 
@@ -45,13 +43,6 @@ public abstract class Item {
 		this.weight = weight;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public Condition getCondition() {
 		return condition;
@@ -59,6 +50,14 @@ public abstract class Item {
 
 	public void setCondition(Condition condition) {
 		this.condition = condition;
+	}
+
+	@Override
+	public String toString() {
+		return itemName + 
+				"\nweight: " + weight + 
+				"\ncondition: " + condition + 
+				"\n";
 	}
 
 }

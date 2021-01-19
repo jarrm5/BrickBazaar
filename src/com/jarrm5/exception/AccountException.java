@@ -1,5 +1,6 @@
 package com.jarrm5.exception;
 
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.model.Account;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.util.LoginService;
@@ -32,8 +33,4 @@ public class AccountException extends AppGenericException{
 		
 		return super.toString() + errorReasonStr;
 	}
-//	public enum AccountErrorReason{
-//		USER_BANNED,BUDDY_LIST_FULL,DUPLICATE_BUDDY;
-//	}
-	
 }

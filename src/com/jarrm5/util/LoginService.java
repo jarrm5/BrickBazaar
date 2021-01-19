@@ -1,6 +1,6 @@
 package com.jarrm5.util;
 
-import com.jarrm5.exception.AppGenericException.ErrorReason;
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.exception.LoginException;
 import com.jarrm5.model.Account;
 

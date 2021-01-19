@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import com.jarrm5.constant.Gender;
 import com.jarrm5.util.BuddyListService;
 
 public class UserAccount extends Account implements Cloneable{
@@ -16,10 +18,6 @@ public class UserAccount extends Account implements Cloneable{
 	//Convert Buddy list to an array? NO
 	//Create BuddyList service with add/delete/update(block/ignore) operations
 	//When we want to retrieve information about an account on the buddylist, we want a copy of the account returned; not the actual object so it can't be modified
-	
-	public enum Gender{
-		MALE,FEMALE;
-	}
 	
 	private int userAccountNumber;
 	private String firstName;
@@ -81,18 +79,6 @@ public class UserAccount extends Account implements Cloneable{
 	public int getAge() {
 		return Period.between(this.birthday,LocalDate.now()).getYears();
 	}
-//	public int getBuddyListSize() {
-//		return buddyList.size();
-//	}
-//	public UserAccount getBuddyFromList(int index) {
-//		try {
-//			return (UserAccount)buddyList.get(index).clone();
-//		} catch (CloneNotSupportedException e) {
-//			// TODO: handle exception
-//			return null;
-//		}
-//		
-//	}
 	
 	public UserAccount(String username, String password,String firstName, String lastName,String email,LocalDate birthday,Gender gender) {
 		super(username, password);
@@ -114,7 +100,7 @@ public class UserAccount extends Account implements Cloneable{
 		users.add(new UserAccount("Styxhexhammer666","password1","Tarl","Warwick","Styxhexhammer666@protonmail.com",LocalDate.of(1989,7,29),Gender.MALE));
 		users.add(new UserAccount("Victor 135","password1","Victor","Ginsburg",null,LocalDate.of(1996,7,7),Gender.MALE));
 		users.add(new UserAccount("Welshers","password1","Duncan","Ramsey",null,LocalDate.of(1988,10,31),Gender.MALE));
-		users.add(new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1960,10,11),Gender.FEMALE));
+		users.add(new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1970,10,11),Gender.FEMALE));
 		return users;
 	}
 	

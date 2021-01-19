@@ -1,5 +1,5 @@
 package com.jarrm5.constant;
 
-public enum ItemPartCategory {
+public enum PartItemCategory {
 	BRICK,PLATE,SLOPE,OTHER;
 }

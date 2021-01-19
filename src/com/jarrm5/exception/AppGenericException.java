@@ -1,5 +1,7 @@
  package com.jarrm5.exception;
 
+import com.jarrm5.constant.ErrorReason;
+
 public abstract class AppGenericException extends Exception {
 	
 	protected Object offender;
@@ -12,16 +14,5 @@ public abstract class AppGenericException extends Exception {
 	
 	public String toString() {
 		return "Application Error Occured.";
-	}
-	public enum ErrorReason{
-		USER_BANNED,
-		INBOX_FULL,
-		BUDDY_LIST_FULL,
-		DUPLICATE_BUDDY,
-		MESSAGE_LENGTH_EXCEEDED,
-		LOGIN_FAILED_PASSWORD,
-		LOGIN_FAILED_ACCOUNT_LOCKED,
-		USER_ACCOUNT_BANNED,
-		USER_ACCOUNT_UNBANNED;
 	}
 }

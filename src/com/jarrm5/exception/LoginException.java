@@ -1,5 +1,6 @@
 package com.jarrm5.exception;
 
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.model.Account;
 import com.jarrm5.util.LoginService;
 
@@ -30,7 +31,4 @@ public class LoginException extends AppGenericException {
 		
 		return errorReasonStr;
 	}
-//	public enum LoginErrorReason{
-//		LOGIN_FAILED_PASSWORD,LOGIN_FAILED_ACCOUNT_LOCKED;
-//	}
 }

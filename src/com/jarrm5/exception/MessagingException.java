@@ -1,5 +1,6 @@
 package com.jarrm5.exception;
 
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.model.Message;
 
 public class MessagingException extends AppGenericException {
@@ -24,7 +25,4 @@ public class MessagingException extends AppGenericException {
 		}
 		return errorReasonStr;
 	}
-//	public enum MessagingErrorReason{
-//		MESSAGE_LENGTH_EXCEEDED;
-//	}
 }

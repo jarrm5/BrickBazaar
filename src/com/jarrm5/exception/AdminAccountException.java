@@ -1,6 +1,7 @@
 package com.jarrm5.exception;
 
-import com.jarrm5.exception.AppGenericException.ErrorReason;
+
+import com.jarrm5.constant.ErrorReason;
 import com.jarrm5.model.AdminAccount;
 
 public class AdminAccountException extends AccountException {
@@ -28,8 +29,4 @@ public class AdminAccountException extends AccountException {
 		
 		return super.toString() + "\n" + errorReasonStr;
 	}
-//	public enum AdminAccountErrorReason{
-//		USER_ACCOUNT_BANNED,USER_ACCOUNT_UNBANNED;
-//	}
-
 }
