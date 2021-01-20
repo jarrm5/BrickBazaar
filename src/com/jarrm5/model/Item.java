@@ -1,22 +1,18 @@
 package com.jarrm5.model;
 
-import com.jarrm5.constant.Condition;
-
 public abstract class Item {
 	
 	private int itemNumber;
 	private String itemName;
 	private double weight;
-	private Condition condition;
 	
 	public Item(String itemName) {
-		this(itemName,0.0,null);
+		this(itemName,0.0);
 	}
 
-	public Item(String itemName, double weight, Condition condition) {
+	public Item(String itemName, double weight) {
 		this.itemName = itemName;
 		this.weight = weight;
-		this.condition = condition;
 	}
 
 	public int getItemNumber() {
@@ -44,19 +40,10 @@ public abstract class Item {
 	}
 
 
-	public Condition getCondition() {
-		return condition;
-	}
-
-	public void setCondition(Condition condition) {
-		this.condition = condition;
-	}
-
 	@Override
 	public String toString() {
 		return itemName + 
 				"\nweight: " + weight + 
-				"\ncondition: " + condition + 
 				"\n";
 	}
 
