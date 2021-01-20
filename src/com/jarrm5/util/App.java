@@ -8,8 +8,10 @@ import com.jarrm5.exception.AdminAccountException;
 import com.jarrm5.exception.AppGenericException;
 import com.jarrm5.model.Account;
 import com.jarrm5.model.AdminAccount;
+import com.jarrm5.model.ItemListing;
 import com.jarrm5.model.Message;
 import com.jarrm5.model.MessageString;
+import com.jarrm5.model.PartItem;
 import com.jarrm5.model.SetItem;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.constant.Gender;
@@ -23,8 +25,12 @@ public class App {
 		//BuddyListTest(userAccounts,adminAccounts);
 		//MessagingTest(userAccounts, adminAccounts);
 		//SearchingServiceTest(userAccounts,adminAccounts);
-		ArrayList<SetItem> items = SetItem.getSetItems();
-		items.forEach(i -> System.out.println(i));
+		//ArrayList<SetItem> items = SetItem.getSetItems();
+		//items.forEach(i -> System.out.println(i));
+		//ArrayList<ItemListing> listings = ItemListing.getItemListings();
+		//listings.forEach(l -> System.out.println(l));
+		ArrayList<PartItem> partItems = PartItem.getPartItems();
+		partItems.forEach(p -> System.out.println(p));
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
