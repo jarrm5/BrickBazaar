@@ -20,17 +20,17 @@ import com.jarrm5.util.MessagingService;
 public class App {
 	//Added a comment
 	public static void main(String[] args) {
-		//ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
-		//ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
+		ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
+		ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
 		//BuddyListTest(userAccounts,adminAccounts);
-		//MessagingTest(userAccounts, adminAccounts);
+		MessagingTest(userAccounts, adminAccounts);
 		//SearchingServiceTest(userAccounts,adminAccounts);
 		//ArrayList<SetItem> items = SetItem.getSetItems();
 		//items.forEach(i -> System.out.println(i));
 		//ArrayList<ItemListing> listings = ItemListing.getItemListings();
 		//listings.forEach(l -> System.out.println(l));
-		ArrayList<PartItem> partItems = PartItem.getPartItems();
-		partItems.forEach(p -> System.out.println(p));
+		//ArrayList<PartItem> partItems = PartItem.getPartItems();
+		//partItems.forEach(p -> System.out.println(p));
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
@@ -40,10 +40,9 @@ public class App {
 			//AdminService.banUser(adminAccounts.get(0), userAccounts.get(0));
 			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(0),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(0).getMessageString().peek().getSubject(),"Bitcoin is up big today ($37k)");
 			MessagingService.sendMessage(userAccounts.get(0).getConversation().get(0),userAccounts.get(0),userAccounts.get(1),userAccounts.get(0).getConversation().get(0).getMessageString().peek().getSubject(),"Thanks for the heads up!");
-			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(1),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(1).getMessageString().peek().getSubject(),"Today we will be talking about self respect.");
-			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(0),userAccounts.get(0),userAccounts.get(1),"YOU SUCK, YOU DOO DOO HEAD!");
-			//MessagingService.sendMessage(userAccounts.get(1).getInbox().get(1),userAccounts.get(1),userAccounts.get(0), "Ya bruh your so intimidating");
-			//MessagingService.sendMessage(userAccounts.get(2),userAccounts.get(0),null, "HODL YOUR BITCOIN!");
+			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(1),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(1).getMessageString().peek().getSubject(),"Ethereum is also up big");
+			MessagingService.sendMessage(userAccounts.get(0).getConversation().get(1),userAccounts.get(0),userAccounts.get(1),userAccounts.get(0).getConversation().get(0).getMessageString().peek().getSubject(),"Yes almost $2k!");			
+			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(1),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(1).getMessageString().peek().getSubject(), "I guess we better HODL!");
 			
 			//Lambda that sends a message to a user whose birthday is today from a friendly admin
 			SearchingService.searchElementsGenericAndProcess(userAccounts, 

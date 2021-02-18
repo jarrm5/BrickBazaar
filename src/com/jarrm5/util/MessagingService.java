@@ -28,10 +28,12 @@ public class MessagingService {
 		}
 		
 		//This is a new thread of messages
+		//To do: since this block starts the conversation, the sender should get a copy of the newMsgString also
 		if(msgString == null) {
 			
 			MessageString newMsgString = new MessageString();
 			newMsgString.getMessageString().push(toSend);
+			sender.getConversation().add(newMsgString);
 			recipient.getConversation().add(newMsgString);
 		}
 		//This is an existing thread of messages (reply)
@@ -43,6 +45,11 @@ public class MessagingService {
 		}
 	}
 	
+	/*
+	 * 1. Check if the sender is a UserAccount then checks if they have been banned
+	 * 2. Check if the conversation size is maxed out
+	 * 3. Check if the message length is within the character limit
+	 */
 	private static void validateSendMessage(Message message) throws AppGenericException {
 		if (message.getSender() instanceof UserAccount && ((UserAccount) message.getSender()).isBanned()) {
 			throw new UserAccountException(ErrorReason.USER_BANNED,(UserAccount)message.getSender());
@@ -58,7 +65,7 @@ public class MessagingService {
 	
 	static class MessageSortUtil implements Comparator{
 
-		@Override
+		//@Override
 		public int compare(Object o1, Object o2) {
 			Message m1 = (Message)o1;
 			Message m2 = (Message)o2;
