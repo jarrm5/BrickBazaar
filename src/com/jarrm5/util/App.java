@@ -23,7 +23,7 @@ public class App {
 		ArrayList<UserAccount> userAccounts = UserAccount.getAccounts();
 		ArrayList<AdminAccount> adminAccounts = AdminAccount.getAccounts();
 		//BuddyListTest(userAccounts,adminAccounts);
-		MessagingTest(userAccounts, adminAccounts);
+		//MessagingTest(userAccounts, adminAccounts);
 		//SearchingServiceTest(userAccounts,adminAccounts);
 		//ArrayList<SetItem> items = SetItem.getSetItems();
 		//items.forEach(i -> System.out.println(i));
@@ -31,6 +31,7 @@ public class App {
 		//listings.forEach(l -> System.out.println(l));
 		//ArrayList<PartItem> partItems = PartItem.getPartItems();
 		//partItems.forEach(p -> System.out.println(p));
+		itemTest();
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
@@ -124,6 +125,9 @@ public class App {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static void itemTest() {
+		
 	}
 }
 
