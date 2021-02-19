@@ -45,7 +45,7 @@ public class App {
 			MessagingService.sendMessage(userAccounts.get(1).getConversation().get(1),userAccounts.get(1),userAccounts.get(0),userAccounts.get(1).getConversation().get(1).getMessageString().peek().getSubject(), "I guess we better HODL!");
 			
 			//Lambda that sends a message to a user whose birthday is today from a friendly admin
-			SearchingService.searchElementsGenericAndProcess(userAccounts, 
+			SearchingService.searchElementsGenericAndProcess(userAccounts,
 				u -> ((UserAccount) u).getBirthday().getDayOfMonth() ==  LocalDate.now().getDayOfMonth() && 
 					 ((UserAccount) u).getBirthday().getMonthValue() == LocalDate.now().getMonthValue(), 
 				u -> {
