@@ -15,6 +15,7 @@ import com.jarrm5.model.PartItem;
 import com.jarrm5.model.SetItem;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.constant.Gender;
+import com.jarrm5.constant.PartItemCategory;
 import com.jarrm5.util.MessagingService;
 
 public class App {
@@ -127,7 +128,11 @@ public class App {
 		}
 	}
 	public static void itemTest() {
+		ArrayList<SetItem> sets = SetItem.getSetItems();
+		ArrayList<PartItem> parts = PartItem.getPartItems();
 		
+		sets.forEach(s -> System.out.println(s));
+		parts.forEach(p -> System.out.println(p));
 	}
 }
 

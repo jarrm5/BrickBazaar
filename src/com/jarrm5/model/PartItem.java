@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import com.jarrm5.constant.PartItemCategory;
+import com.jarrm5.constant.PartItemColor;
 import com.jarrm5.interfaces.Listable;
 import com.jarrm5.interfaces.Relatable;
 
@@ -13,14 +14,16 @@ public class PartItem extends Item implements Listable, Relatable {
 	private int width;
 	private int height;
 	private PartItemCategory category;
+	private PartItemColor color;
 	private ArrayList<SetItem> setItemAppearsIn;
 	
-	public PartItem(double weight, int length, int width, int height, PartItemCategory category, ArrayList<SetItem> setItemAppearsIn) {
+	public PartItem(double weight, int length, int width, int height, PartItemCategory category, PartItemColor color,ArrayList<SetItem> setItemAppearsIn) {
 		super(category + " " + length + " x " + width + " x " + height + " ",weight);
 		this.length = length;
 		this.width = width;
 		this.height = height;
 		this.category = category;
+		this.color = color;
 		this.setItemAppearsIn = setItemAppearsIn;
 	}
 	
@@ -58,10 +61,10 @@ public class PartItem extends Item implements Listable, Relatable {
 	
 	public static ArrayList<PartItem> getPartItems(){
 		ArrayList<PartItem> partItems = new ArrayList<PartItem>();
-		partItems.add(new PartItem(1.25,2,2,1,PartItemCategory.BRICK,null));
-		partItems.add(new PartItem(1.25,1,8,-1,PartItemCategory.PLATE,null));
-		partItems.add(new PartItem(2.10,2,2,2,PartItemCategory.SLOPE,null));
-		partItems.add(new PartItem(2.10,3,1,-1,PartItemCategory.SLOPE,null));
+		partItems.add(new PartItem(1.25,2,2,1,PartItemCategory.BRICK,PartItemColor.BLACK,null));
+		partItems.add(new PartItem(1.25,1,8,-1,PartItemCategory.PLATE,PartItemColor.BLACK,null));
+		partItems.add(new PartItem(2.10,2,2,2,PartItemCategory.SLOPE,PartItemColor.GREEN,null));
+		partItems.add(new PartItem(2.10,3,1,-1,PartItemCategory.SLOPE,PartItemColor.RED,null));
 		return partItems;
 	}
 
