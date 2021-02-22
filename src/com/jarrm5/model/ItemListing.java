@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import com.jarrm5.constant.Condition;
 import com.jarrm5.constant.Gender;
 import com.jarrm5.constant.ItemListingStatus;
-import com.jarrm5.constant.SetItemCategory;
+import com.jarrm5.constant.SetItemMinifigCategory;
+import com.jarrm5.interfaces.Listable;
 
 public class ItemListing {
 	
@@ -21,14 +22,14 @@ public class ItemListing {
 	private int quantity;
 	private String notes;
 	
-	private Item item;
+	private Listable item;
 	private UserAccount seller;
 	private Condition condition;
 	private ItemListingStatus status;
 	private LocalDateTime dateTimeSubmitted;
 	private LocalDateTime closeTime;
 
-	public ItemListing(double startingPrice, boolean instructionsIncluded, int quantity, String notes, Item item,
+	public ItemListing(double startingPrice, boolean instructionsIncluded, int quantity, String notes, Listable item,
 			UserAccount seller, Condition condition, ItemListingStatus status, LocalDateTime closeTime) {
 		this.itemListingId = ++NUMBER_OF_LISTINGS;
 		this.startingPrice = startingPrice;
@@ -93,12 +94,12 @@ public class ItemListing {
 	}
 
 
-	public Item getItem() {
+	public Listable getItem() {
 		return item;
 	}
 
 
-	public void setItem(Item item) {
+	public void setItem(Listable item) {
 		this.item = item;
 	}
 
@@ -158,15 +159,15 @@ public class ItemListing {
 	
 	public static ArrayList<ItemListing> getItemListings(){
 		ArrayList<ItemListing> listings = new ArrayList<ItemListing>();
-		listings.add(new ItemListing(60.00,true,1,"Never been opened and Complete with minifigs and instructions. No box",new SetItem("X-Wing Fighter",767.0,414,"Cockpit opens, 1 rebel fighter minifigure",SetItemCategory.STAR_WARS,LocalDate.of(2006,2,19)),new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989,1,10),Gender.MALE),Condition.NEW,ItemListingStatus.OPEN,LocalDateTime.now().plusDays(2).plusHours(12)));
-		listings.add(new ItemListing(299.00,false,1,"Set is complete and in good condition.  Minifigure has slight wear. No instructions",new SetItem("Blacksmith Shop",825.1,616,"Structure opens to reveal interior",SetItemCategory.CASTLE,LocalDate.of(2002,6,30)),new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1970,10,11),Gender.FEMALE),Condition.USED,ItemListingStatus.PENDING,LocalDateTime.now().plusDays(1).plusHours(4)));
+		listings.add(new ItemListing(60.00,true,1,"Never been opened and Complete with minifigs and instructions. No box",new SetItem("X-Wing Fighter",767.0,414,"Cockpit opens, 1 rebel fighter minifigure",SetItemMinifigCategory.STAR_WARS,LocalDate.of(2006,2,19)),new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989,1,10),Gender.MALE),Condition.NEW,ItemListingStatus.OPEN,LocalDateTime.now().plusDays(2).plusHours(12)));
+		listings.add(new ItemListing(299.00,false,1,"Set is complete and in good condition.  Minifigure has slight wear. No instructions",new SetItem("Blacksmith Shop",825.1,616,"Structure opens to reveal interior",SetItemMinifigCategory.CASTLE,LocalDate.of(2002,6,30)),new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1970,10,11),Gender.FEMALE),Condition.USED,ItemListingStatus.PENDING,LocalDateTime.now().plusDays(1).plusHours(4)));
 		return listings;
 	}
 	
 	@Override
 	public String toString() {
 		
-		return  item.getItemName() +
+		return  //item.getItemName() +
 				"\nListing Id :" + itemListingId + 
 				"\nPrice: $" + startingPrice + 
 				"\nInstructions Included? " + instructionsIncluded + 

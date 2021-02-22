@@ -1,6 +1,6 @@
 package com.jarrm5.constant;
 
-public enum SetItemCategory {
+public enum SetItemMinifigCategory {
 	STAR_WARS,CASTLE,PIRATE;
 	
 	public String toString() {

@@ -15,16 +15,15 @@ public class PartItem extends Item implements Listable, Relatable {
 	private int height;
 	private PartItemCategory category;
 	private PartItemColor color;
-	private ArrayList<SetItem> setItemAppearsIn;
 	
-	public PartItem(double weight, int length, int width, int height, PartItemCategory category, PartItemColor color,ArrayList<SetItem> setItemAppearsIn) {
+	
+	public PartItem(double weight, int length, int width, int height, PartItemCategory category, PartItemColor color) {
 		super(category + " " + length + " x " + width + " x " + height + " ",weight);
 		this.length = length;
 		this.width = width;
 		this.height = height;
 		this.category = category;
 		this.color = color;
-		this.setItemAppearsIn = setItemAppearsIn;
 	}
 	
 	public int getLength() {
@@ -51,33 +50,20 @@ public class PartItem extends Item implements Listable, Relatable {
 		this.height = height;
 	}
 
-	public ArrayList<SetItem> getSetItemAppearsIn() {
-		return setItemAppearsIn;
-	}
-
-	public void setSetItemAppearsIn(ArrayList<SetItem> setItemAppearsIn) {
-		this.setItemAppearsIn = setItemAppearsIn;
-	}
+	
 	
 	public static ArrayList<PartItem> getPartItems(){
 		ArrayList<PartItem> partItems = new ArrayList<PartItem>();
-		partItems.add(new PartItem(1.25,2,2,1,PartItemCategory.BRICK,PartItemColor.BLACK,null));
-		partItems.add(new PartItem(1.25,1,8,-1,PartItemCategory.PLATE,PartItemColor.BLACK,null));
-		partItems.add(new PartItem(2.10,2,2,2,PartItemCategory.SLOPE,PartItemColor.GREEN,null));
-		partItems.add(new PartItem(2.10,3,1,-1,PartItemCategory.SLOPE,PartItemColor.RED,null));
+		partItems.add(new PartItem(1.25,2,2,1,PartItemCategory.BRICK,PartItemColor.BLACK));
+		partItems.add(new PartItem(1.25,1,8,-1,PartItemCategory.PLATE,PartItemColor.BLACK));
+		partItems.add(new PartItem(2.10,2,2,2,PartItemCategory.SLOPE,PartItemColor.GREEN));
+		partItems.add(new PartItem(2.10,3,1,-1,PartItemCategory.SLOPE,PartItemColor.RED));
 		return partItems;
 	}
 
 	@Override
 	public String toString() {
-		String output = this.getItemName();
-		if(this.setItemAppearsIn != null && !this.setItemAppearsIn.isEmpty()) {
-			output += "\nAppears in Sets: \n";
-			for (SetItem setItem : setItemAppearsIn) {
-				output += (setItem.getItemName() + "\n");
-			}
-		}
-		return output;
+		return this.getItemName();
 	}
 
 	@Override
