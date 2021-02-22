@@ -32,7 +32,7 @@ public class App {
 		//listings.forEach(l -> System.out.println(l));
 		//ArrayList<PartItem> partItems = PartItem.getPartItems();
 		//partItems.forEach(p -> System.out.println(p));
-		itemTest();
+		//itemTest();
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
