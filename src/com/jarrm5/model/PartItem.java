@@ -18,7 +18,7 @@ public class PartItem extends Item implements Listable, Relatable {
 	
 	
 	public PartItem(double weight, int length, int width, int height, PartItemCategory category, PartItemColor color) {
-		super(category + " " + length + " x " + width + " x " + height + " ",weight);
+		super(category.toString());
 		this.length = length;
 		this.width = width;
 		this.height = height;
@@ -63,7 +63,7 @@ public class PartItem extends Item implements Listable, Relatable {
 
 	@Override
 	public String toString() {
-		return this.getItemName();
+		return this.height <= 0 ? this.getItemName() + " " + this.length + " x " + this.width : this.getItemName() + " " + this.length + " x " + this.width + " x " + this.height;
 	}
 
 	@Override

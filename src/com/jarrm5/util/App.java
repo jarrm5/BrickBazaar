@@ -11,6 +11,7 @@ import com.jarrm5.model.AdminAccount;
 import com.jarrm5.model.ItemListing;
 import com.jarrm5.model.Message;
 import com.jarrm5.model.MessageString;
+import com.jarrm5.model.MinifigItem;
 import com.jarrm5.model.PartItem;
 import com.jarrm5.model.SetItem;
 import com.jarrm5.model.UserAccount;
@@ -32,7 +33,7 @@ public class App {
 		//listings.forEach(l -> System.out.println(l));
 		//ArrayList<PartItem> partItems = PartItem.getPartItems();
 		//partItems.forEach(p -> System.out.println(p));
-		//itemTest();
+		itemTest();
 	}
 	public static void MessagingTest(ArrayList<UserAccount> userAccounts,ArrayList<AdminAccount> adminAccounts) {
 		try {
@@ -130,9 +131,13 @@ public class App {
 	public static void itemTest() {
 		ArrayList<SetItem> sets = SetItem.getSetItems();
 		ArrayList<PartItem> parts = PartItem.getPartItems();
+		ArrayList<MinifigItem> minifigs = MinifigItem.getMinifigList();
 		
 		sets.forEach(s -> System.out.println(s));
+		System.out.println();
 		parts.forEach(p -> System.out.println(p));
+		System.out.println();
+		minifigs.forEach(m -> System.out.println(m));
 	}
 }
 

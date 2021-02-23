@@ -23,7 +23,7 @@ public class SetItem extends Item implements Listable, Relatable {
 		super(itemName,weight);
 	}
 	
-	public SetItem(String itemName, double weight, int nbrOfPieces, String features,SetItemMinifigCategory category, LocalDate releaseDate) {
+	public SetItem(String itemName, double weight, int nbrOfPieces,String features,SetItemMinifigCategory category, LocalDate releaseDate) {
 		super(itemName,weight);
 		this.nbrOfPieces = nbrOfPieces;
 		this.features = features;
