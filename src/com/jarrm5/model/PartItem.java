@@ -10,6 +10,8 @@ import com.jarrm5.interfaces.Relatable;
 
 public class PartItem extends Item implements Listable, Relatable {
 	
+	public static int NUMBER_OF_PARTITEMS = 0;
+	
 	private int length;
 	private int width;
 	private int height;
@@ -18,7 +20,7 @@ public class PartItem extends Item implements Listable, Relatable {
 	
 	
 	public PartItem(double weight, int length, int width, int height, PartItemCategory category, PartItemColor color) {
-		super(category.toString());
+		super(String.valueOf(++NUMBER_OF_PARTITEMS),category.toString(),weight);
 		this.length = length;
 		this.width = width;
 		this.height = height;

@@ -133,11 +133,11 @@ public class App {
 		ArrayList<PartItem> parts = PartItem.getPartItems();
 		ArrayList<MinifigItem> minifigs = MinifigItem.getMinifigList();
 		
-		sets.forEach(s -> System.out.println(s));
-		System.out.println();
-		parts.forEach(p -> System.out.println(p));
-		System.out.println();
-		minifigs.forEach(m -> System.out.println(m));
+		//sets.forEach(s -> System.out.println(s));
+		//System.out.println();
+		//parts.forEach(p -> System.out.println(p));
+		//System.out.println();
+		minifigs.forEach(m -> System.out.println(m + "\n"));
 	}
 }
 

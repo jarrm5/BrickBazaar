@@ -10,21 +10,15 @@ import com.jarrm5.interfaces.Relatable;
 
 public class SetItem extends Item implements Listable, Relatable {
 	
+	public static int NUMBER_OF_SETITEMS = 0;
+	
 	private int nbrOfPieces;
 	private String features;
 	private SetItemMinifigCategory category;
 	private LocalDate releaseDate;
 
-	public SetItem(String itemName) {
-		super(itemName);
-	}
-
-	public SetItem(String itemName, double weight) {
-		super(itemName,weight);
-	}
-	
 	public SetItem(String itemName, double weight, int nbrOfPieces,String features,SetItemMinifigCategory category, LocalDate releaseDate) {
-		super(itemName,weight);
+		super(category.getItemNumberPrefix() + ++NUMBER_OF_SETITEMS,itemName,weight);
 		this.nbrOfPieces = nbrOfPieces;
 		this.features = features;
 		this.category = category;

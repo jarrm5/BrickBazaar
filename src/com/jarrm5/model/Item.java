@@ -2,24 +2,21 @@ package com.jarrm5.model;
 
 public abstract class Item {
 	
-	private int itemNumber;
+	private String itemNumber;
 	private String itemName;
 	private double weight;
 	
-	public Item(String itemName) {
-		this(itemName,0.0);
-	}
-
-	public Item(String itemName, double weight) {
+	protected Item(String itemNumber,String itemName, double weight) {
+		this.itemNumber = itemNumber;
 		this.itemName = itemName;
 		this.weight = weight;
 	}
 
-	public int getItemNumber() {
+	public String getItemNumber() {
 		return itemNumber;
 	}
 
-	public void setItemNumber(int itemNumber) {
+	public void setItemNumber(String itemNumber) {
 		this.itemNumber = itemNumber;
 	}
 
@@ -43,6 +40,7 @@ public abstract class Item {
 	@Override
 	public String toString() {
 		return itemName + 
+				"\n" + itemNumber +
 				"\nweight: " + weight + 
 				"\n";
 	}
