@@ -8,7 +8,7 @@ import com.jarrm5.constant.SetItemMinifigCategory;
 import com.jarrm5.interfaces.Listable;
 import com.jarrm5.interfaces.Relatable;
 
-public class SetItem extends Item implements Listable, Relatable {
+public class SetItem extends Item {
 	
 	public static int NUMBER_OF_SETITEMS = 0;
 	
@@ -76,23 +76,4 @@ public class SetItem extends Item implements Listable, Relatable {
 				"\nYear released: " + releaseDate.getYear() +
 				"\n";
 	}
-
-	@Override
-	public int compareToOtherRelatable(Relatable other) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <Item> void listItem(Predicate<Item> test) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public double computeListingPrice(Listable low, Listable high) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

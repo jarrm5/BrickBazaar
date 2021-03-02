@@ -137,7 +137,9 @@ public class App {
 		//System.out.println();
 		//parts.forEach(p -> System.out.println(p));
 		//System.out.println();
-		minifigs.forEach(m -> System.out.println(m + "\n"));
+		//minifigs.forEach(m -> System.out.println(m + "\n"));
+		ArrayList<ItemListing> listings = ItemListing.getItemListings();
+		listings.forEach(l -> System.out.println(l));
 	}
 }
 

@@ -8,7 +8,7 @@ import com.jarrm5.constant.SetItemMinifigCategory;
 import com.jarrm5.interfaces.Listable;
 import com.jarrm5.interfaces.Relatable;
 
-public class MinifigItem extends Item implements Listable, Relatable {
+public class MinifigItem extends Item {
 	
 	public static int NUMBER_OF_MINIFIGS = 0;
 	
@@ -43,23 +43,4 @@ public class MinifigItem extends Item implements Listable, Relatable {
 				"\ndescription: " + description + 
 				"\ncategory: " + category.toString();
 	}
-
-	@Override
-	public int compareToOtherRelatable(Relatable other) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <Item> void listItem(Predicate<Item> test) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public double computeListingPrice(Listable low, Listable high) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 import com.jarrm5.constant.Condition;
 import com.jarrm5.constant.Gender;
@@ -12,7 +13,9 @@ import com.jarrm5.constant.ItemListingStatus;
 import com.jarrm5.constant.SetItemMinifigCategory;
 import com.jarrm5.interfaces.Listable;
 
-public class ItemListing {
+public class ItemListing implements Listable{
+	
+	//Seperate out SetItem listings from the others.  Set Item listing has unique characteristics such as instructions included
 	
 	private static int NUMBER_OF_LISTINGS = 0;
 	
@@ -22,14 +25,14 @@ public class ItemListing {
 	private int quantity;
 	private String notes;
 	
-	private Listable item;
+	private Item item;
 	private UserAccount seller;
 	private Condition condition;
 	private ItemListingStatus status;
 	private LocalDateTime dateTimeSubmitted;
 	private LocalDateTime closeTime;
 
-	public ItemListing(double startingPrice, boolean instructionsIncluded, int quantity, String notes, Listable item,
+	public ItemListing(double startingPrice, boolean instructionsIncluded, int quantity, String notes, Item item,
 			UserAccount seller, Condition condition, ItemListingStatus status, LocalDateTime closeTime) {
 		this.itemListingId = ++NUMBER_OF_LISTINGS;
 		this.startingPrice = startingPrice;
@@ -94,12 +97,12 @@ public class ItemListing {
 	}
 
 
-	public Listable getItem() {
+	public Item getItem() {
 		return item;
 	}
 
 
-	public void setItem(Listable item) {
+	public void setItem(Item item) {
 		this.item = item;
 	}
 
@@ -159,7 +162,7 @@ public class ItemListing {
 	
 	public static ArrayList<ItemListing> getItemListings(){
 		ArrayList<ItemListing> listings = new ArrayList<ItemListing>();
-		listings.add(new ItemListing(60.00,true,1,"Never been opened and Complete with minifigs and instructions. No box",new SetItem("X-Wing Fighter",767.0,414,"Cockpit opens, 1 rebel fighter minifigure",SetItemMinifigCategory.STAR_WARS,LocalDate.of(2006,2,19)),new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989,1,10),Gender.MALE),Condition.NEW,ItemListingStatus.OPEN,LocalDateTime.now().plusDays(2).plusHours(12)));
+		listings.add(new ItemListing(60.00,true,1,"Never been opened and Complete with minifigs and instructions.",new SetItem("X-Wing Fighter",767.0,414,"Cockpit opens, 1 rebel fighter minifigure",SetItemMinifigCategory.STAR_WARS,LocalDate.of(2006,2,19)),new UserAccount("jrinella","password1","James","Rinella","ultimatemanlet66207@protonmail.com",LocalDate.of(1989,1,10),Gender.MALE),Condition.NEW,ItemListingStatus.OPEN,LocalDateTime.now().plusDays(2).plusHours(12)));
 		listings.add(new ItemListing(299.00,false,1,"Set is complete and in good condition.  Minifigure has slight wear. No instructions",new SetItem("Blacksmith Shop",825.1,616,"Structure opens to reveal interior",SetItemMinifigCategory.CASTLE,LocalDate.of(2002,6,30)),new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1970,10,11),Gender.FEMALE),Condition.USED,ItemListingStatus.PENDING,LocalDateTime.now().plusDays(1).plusHours(4)));
 		return listings;
 	}
@@ -168,16 +171,27 @@ public class ItemListing {
 	public String toString() {
 		
 		return  //item.getItemName() +
-				"\nListing Id :" + itemListingId + 
+				"\nListing Id: " + itemListingId + 
 				"\nPrice: $" + startingPrice + 
 				"\nInstructions Included? " + instructionsIncluded + 
 				"\nQuantity: " + quantity + 
-				"\nnotes: " + notes + 
+				"\nNotes: " + notes + 
 				"\nSeller: " + seller.getUsername() + 
 				"\nCondition: " + condition + 
 				"\nStatus: " + status + 
 				"\nDate Submitted: " + dateTimeSubmitted.format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mma")) + 
 				"\nTime Remaining: " + getItemListingTimeRemaining()  + "\n";
+	}
+
+	@Override
+	public boolean listItem(Predicate<Item> tester) {
+		return false;
+	}
+
+	@Override
+	public double computeListingPrice(Listable low, Listable high) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

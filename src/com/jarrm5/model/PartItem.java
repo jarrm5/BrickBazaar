@@ -8,7 +8,7 @@ import com.jarrm5.constant.PartItemColor;
 import com.jarrm5.interfaces.Listable;
 import com.jarrm5.interfaces.Relatable;
 
-public class PartItem extends Item implements Listable, Relatable {
+public class PartItem extends Item {
 	
 	public static int NUMBER_OF_PARTITEMS = 0;
 	
@@ -67,23 +67,4 @@ public class PartItem extends Item implements Listable, Relatable {
 	public String toString() {
 		return this.height <= 0 ? this.getItemName() + " " + this.length + " x " + this.width : this.getItemName() + " " + this.length + " x " + this.width + " x " + this.height;
 	}
-
-	@Override
-	public int compareToOtherRelatable(Relatable other) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <Item> void listItem(Predicate<Item> test) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public double computeListingPrice(Listable low, Listable high) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }
