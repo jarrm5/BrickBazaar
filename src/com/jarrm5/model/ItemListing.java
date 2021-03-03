@@ -147,16 +147,4 @@ public abstract class ItemListing implements Listable{
 				"\nDate Submitted: " + dateTimeSubmitted.format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mma")) + 
 				"\nTime Remaining: " + getItemListingTimeRemaining()  + "\n";
 	}
-
-	@Override
-	public boolean listItem(Predicate<ItemListing> tester) {
-		return tester.test(this);
-	}
-
-	@Override
-	public double computeListingPrice(Listable low, Listable high) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

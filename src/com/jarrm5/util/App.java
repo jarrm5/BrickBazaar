@@ -142,10 +142,13 @@ public class App {
 		//minifigs.forEach(m -> System.out.println(m + "\n"));
 		ArrayList<SetItemListing> setItemListings = SetItemListing.getSetItemListings();
 		ArrayList<PartItemListing> partItemListings = PartItemListing.getPartItemListings();
-		setItemListings.forEach(l -> System.out.println(l));
+		setItemListings.forEach(s -> {
+			System.out.println(s);
+			System.out.println(s.listItem() ? "Item is listed now" : "Sorry, Item cannot be listed");
+		});
 		partItemListings.forEach(p -> {
 			System.out.println(p);
-			//System.out.println(p.listItem());
+			System.out.println(p.listItem() ? "Item is listed now" : "Sorry, Item cannot be listed");
 		});
 		
 		

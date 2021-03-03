@@ -35,6 +35,11 @@ public class PartItemListing extends ItemListing{
 		listings.add(new PartItemListing(2.95,"Perfect condition.",new PartItem(2.10,3,1,-1,PartItemCategory.SLOPE,PartItemColor.RED),new UserAccount("mswan","password1","Meg","Swan",null,LocalDate.of(1970,10,11),Gender.FEMALE),Condition.NEW,ItemListingStatus.PENDING,LocalDateTime.now().plusDays(1).plusHours(4),10));
 		return listings;
 	}
+	
+	@Override
+	public boolean listItem() {
+		return this.quantity > 5;
+	}
 
 	@Override
 	public String toString() {

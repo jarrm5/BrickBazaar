@@ -9,6 +9,7 @@ import com.jarrm5.constant.Condition;
 import com.jarrm5.constant.Gender;
 import com.jarrm5.constant.ItemListingStatus;
 import com.jarrm5.constant.SetItemMinifigCategory;
+import com.jarrm5.interfaces.Listable;
 
 public class SetItemListing extends ItemListing{
 	
@@ -40,4 +41,15 @@ public class SetItemListing extends ItemListing{
 		String instructionsIncludedStr = this.instructionsIncluded ? "Yes" : "No";
 		return super.toString() + "Instructions included?: " + instructionsIncludedStr;
 	}
+
+	@Override
+	public boolean listItem() {
+		return this.instructionsIncluded && this.getCondition() == Condition.NEW;
+	}
+
+	/*@Override
+	public double computeListingPrice(Listable low, Listable high) {
+		// TODO Auto-generated method stub
+		return 0;
+	}*/
 }
