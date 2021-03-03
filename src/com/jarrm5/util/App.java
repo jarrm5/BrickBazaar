@@ -13,7 +13,9 @@ import com.jarrm5.model.Message;
 import com.jarrm5.model.MessageString;
 import com.jarrm5.model.MinifigItem;
 import com.jarrm5.model.PartItem;
+import com.jarrm5.model.PartItemListing;
 import com.jarrm5.model.SetItem;
+import com.jarrm5.model.SetItemListing;
 import com.jarrm5.model.UserAccount;
 import com.jarrm5.constant.Gender;
 import com.jarrm5.constant.PartItemCategory;
@@ -138,8 +140,16 @@ public class App {
 		//parts.forEach(p -> System.out.println(p));
 		//System.out.println();
 		//minifigs.forEach(m -> System.out.println(m + "\n"));
-		ArrayList<ItemListing> listings = ItemListing.getItemListings();
-		listings.forEach(l -> System.out.println(l));
+		ArrayList<SetItemListing> setItemListings = SetItemListing.getSetItemListings();
+		ArrayList<PartItemListing> partItemListings = PartItemListing.getPartItemListings();
+		setItemListings.forEach(l -> System.out.println(l));
+		partItemListings.forEach(p -> {
+			System.out.println(p);
+			//System.out.println(p.listItem());
+		});
+		
+		
+		
 	}
 }
 
